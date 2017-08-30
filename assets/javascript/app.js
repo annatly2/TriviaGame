@@ -18,7 +18,7 @@ function decrementTimer(){
 
 	if (counter===0){
 		stopTimer();
-		alert("You are out of time!");
+		//alert("You are out of time!");
 	}
 }
 
@@ -47,6 +47,24 @@ var questions =[{
 	correctAnswer: 2
 }];
 
+var currentQuestion = 0;
+var correctAnswers = 0;
+var quizOver = false;
+
+
+
+
+function displayCurrentQuestion(){
+
+
+$("#question").html("<h2>"+questions[0].question+"</h2>");
+$("#choices").html("<h2>"+questions[0].choice+"</h2>");
+
+
+}
+
+
+displayCurrentQuestion();
 
 });
 
