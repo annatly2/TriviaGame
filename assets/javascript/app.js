@@ -1,33 +1,94 @@
 $(document).ready(function(){
 
-
-
-
-//Timer
-
+var firstScreen;
 var counter = 10;
 var intervalId;
 
-function runTimer(){
-	intervalId = setInterval(decrementTimer, 1000);
+var unansweredQuestion;
+var triviaHTML;
+var numAnswerCorrect;
+var numAnswerWrong;
+var questionCounter = 0;
+
+
+function startScreen(){
+	firstScreen = "<p class='text-center main-button-container'><a class='btn btn-primary btn-lg btn-block start-button' href='#' role='button'>Start The Trivia Game</a></p>";
+	$(".mainArea").html(firstScreen);
 }
 
-function decrementTimer(){
-	counter--;
-	$("#counter-number").html("<h2>" + counter +"</h2>");
+startScreen();
 
-	if (counter===0){
-		stopTimer();
-		//alert("You are out of time!");
+$("body").on("click", ".start-button", function (event){
+	//insert functions to generate HTML and start timer
+});
+
+function generateHTML(){
+
+}
+
+function lossDueToTimeOut(){
+	unansweredQuestion++;
+	triviaHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswers[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='img/x.png'>";
+	$(".mainArea").html(triviaHTML);
+	setTimeout(wait, 3000);
+
+}
+
+function updateWin(){
+	numAnswerCorrect++;
+	triviaHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswers[questionCounter] + "</p>" + imageArray[questionCounter];
+	$(".mainArea").html(triviaHTML);
+	setTimeout(wait, 3000);
+}
+
+function updateLoss(){
+	numAnswerWrong++;
+	triviaHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The answer is: " + correctAnswers[questionCounter] + "</p>" + imageArray[questionCounter];
+	setTimeout(wait, 3000);
+
+}
+
+
+function wait(){
+	if(questionCounter > 2){
+		questionCounter++;
+		generateHTML();
+		counter = 10;
+		//timer
+	}
+	else {
+	finalScreen();
+	
 	}
 }
 
-function stopTimer(){
-	clearInterval(intervalId);
+function runTimer(){
+	intervalId = setInterval(decrementTimer, 1000);
+
+	function decrementTimer(){
+
+		if (counter ===0){
+			clearInterval(intervalId);
+			lossDueToTimeOut();
+		}
+		if (counter > 0){
+		counter--;
+		$(".timer").html(counter);
+
+		}
+	}
+
 }
 
 
-runTimer();
+function finalScreen(){
+	gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You got through the trivia! See your results below!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + numAnswerCorrect + "</p>" + "<p>Wrong Answers: " + numAnswerWrong + "</p>" + "<p>Unanswered: " + unansweredQuestion + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Trivia!</a></p>";
+	$(".mainArea").html(triviaHTML);
+}
+
+
+
+
 
 
 
