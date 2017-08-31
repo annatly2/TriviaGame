@@ -1,32 +1,43 @@
 body{
-	background-image: url("../images/dark-triangles.png");
+	background-image: url("../images/blue2.jpg");
+	background-size: 1250px;
 }
 
 h1{
-	font-size: 45px;
-	font-family: "Sedgwick Ave", Times, serif;
+	font-size: 50px;
+	font-family: "Sedgwick Ave", cursive;
 	text-align: center;
 	color: #ffffff;
 }
 
+.villains-img{
+	margin: 10px;
+}
+
 .btn{
 	color: #ffffff;
-	margin: 10px;
+	margin: 15px;
+	font-family: "Noto Serif", serif;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #a366ff;
-    border-color: #a366ff;;
+    background-color: #8468a3;
+    border-color: #8468a3;;
 }
 
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #a366ff;;
-    border-color: #a366ff;;
+    background-color: #8468a3;;
+    border-color: #8468a3;;
 }
 
 p{
 	color: #ffffff;
+}
+
+.mainArea{
+	background-color: rgba(132, 104, 163, 0.5);
+
 }
