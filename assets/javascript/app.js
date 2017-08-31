@@ -22,7 +22,7 @@ var questions =[{
 	correctAnswer: 0,
 	img: "<img class = 'center-block' src= 'https://68.media.tumblr.com/9cca987c45baf7a3f9bfdc75c045e2a5/tumblr_oj9lczZHQp1st0dt8o1_500.gif'>"
 }, {
-	question: "What is Maleficent's crow called?", 
+	question: "What is the name of Maleficent's crow?", 
 	choice: ["Raven", "Lucifer", "Diablo", "Rook"],
 	correctAnswer: 2,
 	img: "<img class = 'center-block' src= 'https://wereallmadinhere.files.wordpress.com/2012/10/260wtv7-jpg.gif'>"
@@ -107,18 +107,24 @@ function runTimer(){
 	}
 }
 
-
 function finalScreen(){
 	triviaHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You got through the trivia! See your results below!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + numAnswerCorrect + "</p>" + "<p>Wrong Answers: " + numAnswerWrong + "</p>" + "<p>Unanswered: " + unansweredQuestion + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset The Trivia!</a></p>";
 	$(".mainArea").html(triviaHTML);
 }
 
+function resetTrivia(){
+	numAnswerCorrect = 0;
+	numAnswerWrong = 0;
+	unansweredQuestion = 0;
+	questionCounter = 0;
+	counter = 5;
+	generateHTML();
+	runTimer();
+}
 
-
-
-
-
-
+$("body").on("click", ".reset-button", function (event){
+	resetTrivia();
+});
 
 
 });

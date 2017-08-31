@@ -35,7 +35,10 @@ h1{
 
 p{
 	color: #ffffff;
+	font-family: "Noto Serif", serif;
+
 }
+
 
 .mainArea{
 	background-color: rgba(132, 104, 163, 0.5);
