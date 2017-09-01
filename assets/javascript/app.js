@@ -91,7 +91,7 @@ function wait(){
 	if(questionCounter < 4){
 		questionCounter++;
 		generateHTML();
-		counter = 5;
+		counter = 10;
 		runTimer();
 	}
 	else {
