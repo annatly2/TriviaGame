@@ -18,29 +18,25 @@ h1{
 	color: #ffffff;
 	margin: 15px;
 	font-family: "Noto Serif", serif;
+	position: absolute;
 }
 
-.btn-primary {
+.btn-primary, .btn-primary:hover {
     color: #fff;
     background-color: #8468a3;
-    border-color: #8468a3;;
-}
-
-
-.btn-primary:hover {
-    color: #fff;
-    background-color: #8468a3;;
     border-color: #8468a3;;
 }
 
 p{
 	color: #ffffff;
 	font-family: "Noto Serif", serif;
-
 }
-
 
 .mainArea{
 	background-color: rgba(132, 104, 163, 0.5);
+}
 
+.answer:hover{
+	font-size: 25px;
+	box-shadow: inset 0 0 0 25px #755fef;
 }

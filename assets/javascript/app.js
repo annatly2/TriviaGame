@@ -1,9 +1,8 @@
 $(document).ready(function(){
 
 var firstScreen;
-var counter = 5;
+var counter = 10;
 var intervalId;
-
 var triviaHTML;
 var numAnswerCorrect = 0;
 var numAnswerWrong = 0;
@@ -15,17 +14,27 @@ var questions =[{
 	question: "In The Little Mermaid, when Ursula transformed herself into a bride for Prince Eric, what did she call herself?",
 	choice: ["Veronica", "Vanessa", "Victoria", "Vivian"],
 	correctAnswer: 1,
-	img: "<img class='center-block' src= 'https://68.media.tumblr.com/ea27c6140ece2a7be399c753d7d1f00b/tumblr_inline_nfq90upz0i1t2hh7q.gif'>"
+	img: "<img class='center-block' src= 'https://68.media.tumblr.com/ea27c6140ece2a7be399c753d7d1f00b/tumblr_inline_nfq90upz0i1t2hh7q.gif' width = 450px>"
 },{
 	question: "At the end of The Emperor's New Groove, what animal does Yzma turn into?",
 	choice: ["Cat", "Dog", "Cow", "Llama"],
 	correctAnswer: 0,
-	img: "<img class = 'center-block' src= 'https://68.media.tumblr.com/9cca987c45baf7a3f9bfdc75c045e2a5/tumblr_oj9lczZHQp1st0dt8o1_500.gif'>"
-}, {
+	img: "<img class = 'center-block' src= 'https://68.media.tumblr.com/9cca987c45baf7a3f9bfdc75c045e2a5/tumblr_oj9lczZHQp1st0dt8o1_500.gif' width = 400px>"
+},{
 	question: "What is the name of Maleficent's crow?", 
 	choice: ["Raven", "Lucifer", "Diablo", "Rook"],
 	correctAnswer: 2,
-	img: "<img class = 'center-block' src= 'https://wereallmadinhere.files.wordpress.com/2012/10/260wtv7-jpg.gif'>"
+	img: "<img class = 'center-block' src= 'https://wereallmadinhere.files.wordpress.com/2012/10/260wtv7-jpg.gif' width = 350px>"
+},{
+	question: "In the movie, The Lion King, which one of these is not one of the hyenas' name?",
+	choice: ["Shenzi", "Ganzhi", "Ed", "Banzai"],
+	correctAnswer: 1,
+	img: "<img class = 'center-block' src ='https://68.media.tumblr.com/tumblr_lwbw3wSigl1r6hffko1_500.gif' width = 300px>"
+},{
+	question: "In 101 Dalmations, what made Cruella de Vil wealthy?",
+	choice: ["Her shoes", "Her house", "Her fur coats", "Her dogs"],
+	correctAnswer: 2,
+	img: "<img class = 'center-block' src = 'https://media.tenor.com/images/637e9b2da383c8ee69e58d659cebd0af/tenor.gif' width = 450px>"
 }];
 
 function startScreen(){
@@ -50,11 +59,10 @@ $("body").on("click", ".answer", function(event){
 		clearInterval(intervalId);
 		updateLoss();
 	}
-
 });
 
 function generateHTML(){
-	triviaHTML= "<p class='text-center timer-p'>Time Remaining: <span class='timer'>5</span></p><p class='text-center'>" + questions[questionCounter].question + "</p><p class='first-answer answer'>" + questions[questionCounter].choice[0] + "</p><p class='answer'>"+questions[questionCounter].choice[1]+"</p><p class='answer'>"+questions[questionCounter].choice[2]+"</p><p class='answer'>"+questions[questionCounter].choice[3]+"</p>";
+	triviaHTML= "<p class='text-center timer-p'>Time Remaining: <span class='timer'>10</span></p><p class='text-center'>" + questions[questionCounter].question + "</p><p class='first-answer answer'>" + questions[questionCounter].choice[0] + "</p><p class='answer'>"+questions[questionCounter].choice[1]+"</p><p class='answer'>"+questions[questionCounter].choice[2]+"</p><p class='answer'>"+questions[questionCounter].choice[3]+"</p>";
 	$(".mainArea").html(triviaHTML);
 }
 
@@ -62,25 +70,25 @@ function lossDueToTimeOut(){
 	unansweredQuestion++;
 	triviaHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + questions[questionCounter].choice[questions[questionCounter].correctAnswer] + "</p>" + questions[questionCounter].img;
 	$(".mainArea").html(triviaHTML);
-	setTimeout(wait, 2000);
+	setTimeout(wait, 4000);
 }
 
 function updateWin(){
 	numAnswerCorrect++;
 	triviaHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You're correct! The answer is: " + questions[questionCounter].choice[questions[questionCounter].correctAnswer] + "</p>" + questions[questionCounter].img;
 	$(".mainArea").html(triviaHTML);
-	setTimeout(wait, 2000);
+	setTimeout(wait, 4000);
 }
 
 function updateLoss(){
 	numAnswerWrong++;
 	triviaHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You're wrong! The answer is: " + questions[questionCounter].choice[questions[questionCounter].correctAnswer] + "</p>" + questions[questionCounter].img;
 	$(".mainArea").html(triviaHTML);
-	setTimeout(wait, 2000);
+	setTimeout(wait, 4000);
 }
 
 function wait(){
-	if(questionCounter < 2){
+	if(questionCounter < 4){
 		questionCounter++;
 		generateHTML();
 		counter = 5;
@@ -117,7 +125,7 @@ function resetTrivia(){
 	numAnswerWrong = 0;
 	unansweredQuestion = 0;
 	questionCounter = 0;
-	counter = 5;
+	counter = 10;
 	generateHTML();
 	runTimer();
 }
@@ -125,6 +133,5 @@ function resetTrivia(){
 $("body").on("click", ".reset-button", function (event){
 	resetTrivia();
 });
-
 
 });
